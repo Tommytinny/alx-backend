@@ -12,7 +12,7 @@ class Config:
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
+    BABEL_DEFAULT_TIMEZONE = "UTF"
 
 
 app = Flask(__name__)
