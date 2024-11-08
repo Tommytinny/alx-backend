@@ -3,8 +3,6 @@ from flask_babel import Babel, _
 from pytz import timezone
 import pytz.exceptions
 
-app = Flask(__name__)
-
 
 class Config:
     """Configuartion of available languages
@@ -13,8 +11,10 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTF"
 
-app.config.from_object(Config)
 
+app = Flask(__name__)
+app.config.from_object(Config)
+app.url_map.strict_slashes = False
 babel = Babel(app)
 
 users = {
