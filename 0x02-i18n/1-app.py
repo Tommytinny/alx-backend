@@ -12,7 +12,7 @@ class Config:
     """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTF"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app = Flask(__name__)
@@ -23,7 +23,7 @@ app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
-@app.route("/", strict_slashes=False)
+@app.route('/')
 def hello_world():
     """Dipslay hello world
     """
