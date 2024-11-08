@@ -1,5 +1,10 @@
-from flask import Flask, render_template, g, request, jsonify
-from flask_babel import Babel, _
+#!/usr/bin/env python3
+""" Flask app
+"""
+
+
+from flask import Flask, render_template, g, request
+from flask_babel import Babel
 
 
 class Config:
@@ -22,6 +27,7 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 @babel.localeselector
 def get_locale():
     """To determine the best match with our supported languages
@@ -30,14 +36,15 @@ def get_locale():
         locale = request.args.get('locale')
         if locale == 'en' or locale == 'fr':
             return locale
-        
+
     if g.user:
         return g.user["locale"]
-    
+
     if request.accept_languages:
         return request.accept_languages.best_match(app.config['LANGUAGES'])
     else:
         return app.config['BABEL_DEFAULT_LOCALE']
+
 
 def get_user():
     """get user function
@@ -49,11 +56,13 @@ def get_user():
         return None
     return None
 
-@app.before_request        
+
+@app.before_request
 def before_request():
     """Before request fucntion
     """
     g.user = get_user()
+
 
 @app.route("/", strict_slashes=False)
 def hello_world():
@@ -65,6 +74,5 @@ def hello_world():
     return render_template("6-index.html")
 
 
-    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
