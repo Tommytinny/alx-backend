@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Flask app
+""" Flask app
 """
 
-from flask import Flask, render_template, g, request, jsonify
-from flask_babel import Babel, _
+from flask import Flask, render_template, g, request
+from flask_babel import Babel
 
 
 class Config:
