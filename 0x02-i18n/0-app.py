@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Flask app for Hello World
 """
+
+
 from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route('/')
 def hello_world():
     """display Hello World
     """
