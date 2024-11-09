@@ -2,7 +2,7 @@
 """ Flask app
 """
 
-
+from typing import Union
 from flask import Flask, render_template, g, request
 from flask_babel import Babel
 
@@ -29,7 +29,7 @@ users = {
 
 
 @babel.localeselector
-def get_locale():
+def get_locale()-> str:
     """To determine the best match with our supported languages
     """
     if 'locale' in request.args:
@@ -46,7 +46,7 @@ def get_locale():
         return app.config['BABEL_DEFAULT_LOCALE']
 
 
-def get_user():
+def get_user()-> Union[str, None]:
     """get user function
     """
     if 'login_as' in request.args:
@@ -58,14 +58,14 @@ def get_user():
 
 
 @app.before_request
-def before_request():
+def before_request()-> None:
     """Before request fucntion
     """
     g.user = get_user()
 
 
 @app.route('/', strict_slashes=False)
-def hello_world():
+def hello_world()-> str:
     """Dipslay hello world
     """
     if g.user:

@@ -21,7 +21,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale()-> str:
     """To determine the best match with our supported languages
     """
     if 'locale' in request.args:
@@ -34,7 +34,7 @@ def get_locale():
 
 
 @app.route("/", strict_slashes=False)
-def hello_world():
+def hello_world()-> str:
     """Dipslay hello world
     """
     return render_template("4-index.html")

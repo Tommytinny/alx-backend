@@ -24,7 +24,7 @@ babel = Babel(app)
 
 
 @app.route("/", strict_slashes=False)
-def hello_world():
+def hello_world()-> str:
     """Dipslay hello world
     """
     return render_template("1-index.html")
