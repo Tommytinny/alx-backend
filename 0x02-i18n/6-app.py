@@ -64,7 +64,7 @@ def before_request():
     g.user = get_user()
 
 
-@app.route("/", strict_slashes=False)
+@app.route('/', strict_slashes=False)
 def hello_world():
     """Dipslay hello world
     """
